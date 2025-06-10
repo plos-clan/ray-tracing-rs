@@ -84,11 +84,12 @@ impl Hitable for Sphere {
             }
         }
 
-        let mut record = HitRecord::default();
-
-        record.ray_factor = root;
-        record.source_point = ray.point_at_parameter(root);
-        record.material = self.material.clone();
+        let mut record = HitRecord {
+            ray_factor: root,
+            source_point: ray.point_at_parameter(root),
+            material: self.material.clone(),
+            ..Default::default()
+        };
 
         let normal = (record.source_point - self.center) / self.radius;
         let front_face = ray.direction().dot(&normal) <= 0.0;

@@ -3,6 +3,10 @@ name = "ray-tracing"
 version = "0.1.0"
 edition = "2021"
 
+[profiles.release]
+opt-level = 3
+lto = true
+
 [dependencies]
 nalgebra = "0.33.2"
 rand = "0.9.1"

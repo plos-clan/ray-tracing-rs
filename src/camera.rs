@@ -129,7 +129,7 @@ impl Camera {
 
         let image_buffer = (0..self.image_height)
             .into_par_iter()
-            .map(|j| render_row(j))
+            .map(render_row)
             .flatten()
             .collect::<Vec<u8>>();
 
